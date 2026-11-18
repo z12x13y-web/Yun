@@ -5,7 +5,7 @@
 (function () {
   "use strict";
 
-  var DEFAULT_SOURCE = "https://raw.githubusercontent.com/FongMi/TV/refs/heads/release/json/config.json";
+  var DEFAULT_SOURCE = "https://gitee.com/iy-cpu/iy/raw/master/天神IY.json";
   var LS_SOURCE = "yun:source";
   var LS_ITEM = "yun:item";
   var $ = function (s) { return document.querySelector(s); };
