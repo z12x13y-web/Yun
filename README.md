@@ -13,7 +13,7 @@
 默认配置地址（页面右上角「⋯」可修改，保存在浏览器本地）：
 
 ```
-https://raw.githubusercontent.com/FongMi/TV/refs/heads/release/json/config.json
+https://gitee.com/iy-cpu/iy/raw/master/天神IY.json
 ```
 
 配置格式（FongMi / TVBox）：
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/FongMi/TV/refs/heads/release/json/config.json
 - `type: 1` 且 `api` 为 http(s) 的站点，网页端可直接请求 `?ac=videolist&t=&pg=` 取片单
 - `api` 以 `csp_` 开头的原生爬虫站点只能在 FongMi TV 等 App 内运行，浏览器无法执行
 
-> 说明：2026-11-18 读取该地址时返回 `404: Not Found`，因此首次打开页面会提示「影视源读取失败」，列表回退为界面示例数据（`demo.js`）。换成可用的配置地址后即按接口数据渲染。
+> 说明：2026-11-18 读取该地址时返回 `423`「The Repository has been blocked」（该 Gitee 仓库已被封禁），因此首次打开页面会提示「影视源读取失败」，列表回退为界面示例数据（`demo.js`）。地址恢复可访问后即按接口数据渲染，也可在页面右上角「⋯」里改地址。
 
 ## 目录结构
 
