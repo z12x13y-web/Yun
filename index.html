@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0f">
+<title>云影视 · 电影</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="list" class="theme-dark">
+
+<header class="topbar">
+  <button class="icon-btn" type="button" onclick="history.back()" aria-label="返回">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <h1 class="topbar__title">电影</h1>
+  <div class="topbar__actions">
+    <button class="icon-btn" type="button" id="searchBtn" aria-label="搜索">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="icon-btn" type="button" id="sourceBtn" aria-label="影视源">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="searchbar" id="searchbar" hidden>
+  <input id="searchInput" type="search" placeholder="搜索影片" autocomplete="off">
+</div>
+
+<div class="toolbar">
+  <button class="sort" id="sortBtn" type="button">按添加日期
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v14M7 18l-3-3M7 18l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <span class="count" id="count">0</span>
+  <div class="toolbar__end">
+    <button class="icon-btn" type="button" aria-label="网格视图">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="14" y="4" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="4" y="14" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="14" y="14" width="6" height="6" rx="1.2" fill="currentColor"/></svg>
+    </button>
+    <button class="icon-btn" type="button" aria-label="筛选">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<p class="note" id="note" hidden></p>
+
+<main class="grid" id="grid"></main>
+
+<!-- 影视源面板 -->
+<div class="sheet" id="sourceSheet" hidden>
+  <div class="sheet__panel">
+    <div class="sheet__head">
+      <h2>影视源</h2>
+      <button class="icon-btn" type="button" onclick="document.getElementById('sourceSheet').hidden=true" aria-label="关闭">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <label class="sheet__label" for="sourceInput">配置地址（FongMi/TVBox JSON）</label>
+    <input class="sheet__input" id="sourceInput" type="url" spellcheck="false">
+    <button class="sheet__save" id="sourceSave" type="button">保存并重新加载</button>
+    <h3 class="sheet__sub">站点（播放源）</h3>
+    <ul class="site-list" id="siteList"></ul>
+  </div>
+</div>
+
+<script src="demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
