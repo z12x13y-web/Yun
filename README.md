@@ -74,7 +74,7 @@ GitHub Actions 的「打包 APK」workflow 会在推送 `android/**` 或手动�
 并把安装包传到 Release：
 
 ```
-https://github.com/z12x13y-web/Yun/releases/download/apk-latest/Yun-3.apk
+https://github.com/z12x13y-web/Yun/releases/tag/apk-latest
 ```
 
 本地构建：
