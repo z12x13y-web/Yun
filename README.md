@@ -64,6 +64,27 @@ python3 -m http.server 8080
 
 也可以直接打开 `index.html`（部分浏览器对 `file://` 的 fetch 有限制，建议用本地服务器）。
 
+## 安装包（APK）
+
+`android/` 是一个极简 WebView 壳：把构建产物放进 `assets`，用
+`WebViewAssetLoader` 以 `https://appassets.androidplatform.net/assets/` 提供页面，
+所以 `fetch("source.json")` 这类同源请求在 App 内也能正常工作。
+
+GitHub Actions 的「打包 APK」workflow 会在推送 `android/**` 或手动触发时构建，
+并把安装包传到 Release：
+
+```
+https://github.com/z12x13y-web/Yun/releases/download/apk-latest/Yun-3.apk
+```
+
+本地构建：
+
+```bash
+python3 build.py
+mkdir -p android/app/src/main/assets && cp dist/* android/app/src/main/assets/
+gradle -p android assembleRelease
+```
+
 ## 说明
 
 - 本项目只包含界面与影视源解析逻辑，不附带、不托管任何影片资源；播放内容来自使用者自行配置的影视源。
