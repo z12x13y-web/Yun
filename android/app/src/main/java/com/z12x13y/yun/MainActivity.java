@@ -15,8 +15,14 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.JavascriptInterface;
 
 import androidx.webkit.WebViewAssetLoader;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * 把 Yun 的静态页面装进一个 WebView。
@@ -77,6 +83,8 @@ public class MainActivity extends Activity {
             }
         });
 
+        web.addJavascriptInterface(new HttpBridge(), "YunNative");
+
         web.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onPermissionRequest(PermissionRequest request) {
@@ -90,6 +98,37 @@ public class MainActivity extends Activity {
 
         if (savedInstanceState == null) {
             web.loadUrl(START_URL);
+        }
+    }
+
+    /** 原生 HTTP 抓取，绕开网页端的跨域限制。JS 线程调用，可以同步阻塞。 */
+    private static class HttpBridge {
+        @JavascriptInterface
+        public String get(String url) {
+            HttpURLConnection conn = null;
+            try {
+                conn = (HttpURLConnection) new URL(url).openConnection();
+                conn.setConnectTimeout(8000);
+                conn.setReadTimeout(12000);
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android) Yun/1.1");
+                conn.setInstanceFollowRedirects(true);
+                int code = conn.getResponseCode();
+                InputStream in = code >= 400 ? conn.getErrorStream() : conn.getInputStream();
+                if (in == null) return "";
+                ByteArrayOutputStream buf = new ByteArrayOutputStream();
+                byte[] tmp = new byte[8192];
+                int n;
+                while ((n = in.read(tmp)) > 0) {
+                    buf.write(tmp, 0, n);
+                    if (buf.size() > 4 * 1024 * 1024) break;
+                }
+                in.close();
+                return buf.toString("UTF-8");
+            } catch (Exception e) {
+                return "";
+            } finally {
+                if (conn != null) conn.disconnect();
+            }
         }
     }
 
