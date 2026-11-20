@@ -1,0 +1,26 @@
+{
+ "builtAt": "2026-11-21 00:16",
+ "site": "",
+ "sections": [
+  {
+   "key": "movie",
+   "title": "电影",
+   "items": []
+  },
+  {
+   "key": "tv",
+   "title": "电视剧",
+   "items": []
+  },
+  {
+   "key": "anime",
+   "title": "动漫",
+   "items": []
+  },
+  {
+   "key": "variety",
+   "title": "综艺",
+   "items": []
+  }
+ ]
+}

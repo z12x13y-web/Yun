@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Yun 影视</title>
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1 class="brand">Yun</h1>
+  <div class="topbar__actions">
+    <button class="icon-btn" id="searchBtn" type="button" aria-label="搜索">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="searchbar" id="searchbar" hidden>
+  <input id="searchInput" type="search" placeholder="搜索影片" autocomplete="off">
+</div>
+
+<main id="sections" class="sections"></main>
+
+<p class="footer" id="footer"></p>
+
+<script src="home.js"></script>
+</body>
+</html>
